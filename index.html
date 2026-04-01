@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Управление поставщиками строительных материалов</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>📦 Управление поставщиками строительных материалов</h1>
+        <p class="subtitle">База данных поставщиков и производителей</p>
+      </header>
+
+      <!--Навигация (вкладки)-->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="companies">🏢 Компании</button>
+        <button class="tab-btn" data-tab="materials">📦 Материалы</button>
+        <button class="tab-btn" data-tab="contacts">👥 Контакты</button>
+        <button class="tab-btn" data-tab="search">🔍 Поиск</button>
+      </div>
+
+      <!-- Вкладка: Компании -->
+      <div id="companies" class="tab-content active">
+        <div class="toolbar">
+          <button id="addCompanyBtn" class="btn btn-primary">
+            ➕ Добавить компанию
+          </button>
+          <input
+            type="text"
+            id="searchCompanies"
+            placeholder="🔍 Поиск по по компаниям.."
+            class="search-input"
+          />
+        </div>
+
+        <div id="companiesList" class="card-grid"></div>
+      </div>
+
+      <!-- Вкладка: Материалы -->
+      <div id="materials" class="tab-content">
+        <div class="toolbar">
+          <button id="addMaterialBtn" class="btn btn-primary">
+            ➕ Добавить материал
+          </button>
+          <button id="addCategoryBtn" class="btn btn-secondary">
+            📁 Добавить категорию
+          </button>
+        </div>
+        <div id="materialsList" class="tree-veiw"></div>
+      </div>
+
+      <!-- Вкладка: Контакты -->
+      <div id="contacts" class="tab-content">
+        <div class="toolbar">
+          <button id="addContactBtn" class="btn btn-primary">
+            ➕ Добавить контакт
+          </button>
+          <input
+            type="text"
+            id="searchContacts"
+            placeholder="🔍 Поиск по контактам..."
+            class="search-input"
+          />
+        </div>
+        <div id="contactsList" class="card-grid"></div>
+      </div>
+
+      <!-- Вкладка: Поиск -->
+      <div id="search" class="tab-content">
+        <div class="search-panel">
+          <div class="search-filters">
+            <input
+              type="text"
+              id="searchMaterials"
+              placeholder="🔍 Материалы (через запятую)"
+              class="search-input"
+            />
+            <input
+              type="text"
+              id="searchRegion"
+              placeholder="📍 Регион"
+              class="search-input"
+            />
+            <select id="supplierType" class="search-select">
+              <!-- 
+                      <select> - выпадающий список
+                      <option> - варианты выбора
+                  -->
+              <option value="">Все типы</option>
+              <option value="producer">Только производители</option>
+              <option value="distributor">Только поставщики</option>
+            </select>
+
+            <button id="doSearch" class="btn btn-primary">
+              🔍 Найти поставщиков
+            </button>
+          </div>
+          <div id="searchResults" class="results-list"></div>
+        </div>
+      </div>
+
+      <!-- Модальное окно -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="modalBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
